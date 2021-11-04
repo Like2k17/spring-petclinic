@@ -1,1 +1,8 @@
+[Unit]
+Description=Manage Java Service
 
+[Service]
+ExecStart=/usr/bin/java -jar /home/ubuntu/jenkins/workspace/create-systemd/target/spring-petclinic-2.5.0-SNAPSHOT.jar --server.port=8080
+
+[Install]
+WantedBy=multi-user.target
