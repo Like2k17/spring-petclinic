@@ -13,19 +13,6 @@ pipeline {
                 sh "./mvnw package"
             }
         }
-        stage('Deploy') {
-            steps {
-                echo "Start of Stage Deploy"
-                echo "Deploying......."
-                script{
-                    withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                        sh "nohup java -jar target/*.jar &"
-                echo "End of Stage Deploy"
-            
-                    }
-                }    
-            }
-        }
         stage('Systemd') {
             steps {
                 echo "Start of Stage Systemd"
