@@ -1,9 +1,5 @@
 pipeline {
 	agent { node { label 'node-app' } }
-	tools {
-        // Install the Maven version configured as "M3"
-        maven "M3"
-    }
 	environment {
 	   DOCKERHUB_CREDENTIALS = credentials('6cb8f73753db-dockerhub')
 	}
