@@ -15,5 +15,5 @@ COPY mvnw/ pom.xml/ ./
 
 COPY src ./src
 
-CMD ["./mvnw", "spring-boot:run" "-Dspring-boot.run.profiles=mysql"]
+CMD ["./mvnw", "spring-boot:run"]
 EXPOSE 8080
