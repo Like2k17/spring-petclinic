@@ -18,7 +18,7 @@ pipeline {
        stage('SonarQube Analysis') {
             steps {
 	            withSonarQubeEnv(installationName: 'sonarqube-khoma') {
-	               sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
+	               sh "./mvnw clean package sonar:sonar"
 	            }
             }        
        }
