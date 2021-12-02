@@ -3,9 +3,9 @@ pipeline {
 	environment {
 	   DOCKERHUB_CREDENTIALS = credentials('6cb8f73753db-dockerhub')
 	}
-   tools {
-      maven 'M3'
-    }
+  // tools {
+    //  maven 'M3'
+    //}
     triggers {
         cron('03 08 * * 1-5')
     }
@@ -17,8 +17,8 @@ pipeline {
        }
        stage('SonarQube Analysis') {
             steps {
-	            withSonarQubeEnv(credentialsId: 'sonarqube-khoma', installationName: 'sonarqube-khoma') {
-	               sh "mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-sonar"
+	            withSonarQubeEnv(installationName: 'sonarqube-khoma') {
+	               sh "./mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
 	            }
             }        
        }
