@@ -11,15 +11,17 @@ pipeline {
     }
     stages {
        stage('Checkout') {
-           steps {
+           
             checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'ssh-key', url: 'git@github.com:Like2k17/spring-petclinic.git']]])
            }
        }
        stage('SonarQube Analysis') {
+          steps {
 	    withSonarQubeEnv() {
 	       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-sonar"
 	    }
-       }
+          }        
+        }
 	   stage('Login') {
 	      steps {
              echo "Logining......."
