@@ -3,6 +3,9 @@ pipeline {
 	environment {
 	   DOCKERHUB_CREDENTIALS = credentials('6cb8f73753db-dockerhub')
 	}
+        tools {
+                maven 'M3'
+        }
     triggers {
         cron('03 08 * * 1-5')
     }
@@ -13,9 +16,8 @@ pipeline {
            }
        }
        stage('SonarQube Analysis') {
-	    def mvn = tool 'Default_Maven';
 	    withSonarQubeEnv() {
-	       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-sonar"
+	       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-sonar"
 	    }
        }
 	   stage('Login') {
