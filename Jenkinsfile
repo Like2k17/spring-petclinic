@@ -17,7 +17,7 @@ pipeline {
        }
        stage('SonarQube Analysis') {
             steps {
-	            withSonarQubeEnv() {
+	            withSonarQubeEnv(credentialsId: 'sonarqube-khoma', installationName: 'sonarqube-khoma') {
 	               sh "mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins-sonar"
 	            }
             }        
