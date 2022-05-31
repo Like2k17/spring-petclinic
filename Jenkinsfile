@@ -10,7 +10,7 @@ pipeline {
 
     stage('Unit') {
       steps {
-        junit '.xml'
+        sh 'ls -la'
       }
     }
 
