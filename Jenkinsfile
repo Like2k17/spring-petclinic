@@ -4,6 +4,7 @@ pipeline {
     stage('Buzz Build') {
       steps {
         echo 'build package'
+        sh './mvn clean'
       }
     }
 
