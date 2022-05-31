@@ -7,9 +7,9 @@ pipeline {
       }
     }
 
-    stage('Buzz Test') {
+    stage('Unit') {
       steps {
-        archiveArtifacts(artifacts: 'target/*.jar', fingerprint: true)
+        junit '.xml'
       }
     }
 
