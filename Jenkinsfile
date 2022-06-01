@@ -9,8 +9,20 @@ pipeline {
     }
 
     stage('Unit') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('Testing A') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('Testing B') {
+          steps {
+            sh '''sleep 10
+echo done.'''
+          }
+        }
+
       }
     }
 
