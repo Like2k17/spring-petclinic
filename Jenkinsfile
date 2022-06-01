@@ -14,5 +14,14 @@ pipeline {
       }
     }
 
+    stage('Environment') {
+      steps {
+        echo 'I am a ${BUZZ_NAME}'
+      }
+    }
+
+  }
+  environment {
+    BUZZ_NAME = 'Worker Bee'
   }
 }
